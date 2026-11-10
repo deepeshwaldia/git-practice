@@ -1,0 +1,35 @@
+
+name: Git Practice CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display message
+        run: echo "GitHub Actions is running"
+
+      - name: List project files
+        run: ls -la
+
+      - name: Verify project files
+        run: |
+          test -f index.html
+          test -f contact.html
+          test -f fetch-demo.txt
+          echo "All required files exist!"
+
+      - name: Pipeline completed
+        run: echo "CI Pipeline executed successfully"
